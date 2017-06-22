@@ -1,7 +1,5 @@
 package de.damager.commands;
 
-
-
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -16,11 +14,7 @@ public class DamagerCMD implements CommandExecutor {
 		public static int time = 10;
 		
 	@Override
-		
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-
-		
-		
 		
 		if(sender instanceof Player) {
 			Player p = (Player) sender;
@@ -31,39 +25,38 @@ public class DamagerCMD implements CommandExecutor {
 					
 					Damager.damage(4, p, 10);
 					Bukkit.dispatchCommand(sender, "kit stone");
-				}else if(args[0].equalsIgnoreCase("medium")){
+				} else if(args[0].equalsIgnoreCase("medium")){
 					
 					Damager.damage(6, p, 10);
 					Bukkit.dispatchCommand(sender, "kit stone");
-				}else if(args[0].equalsIgnoreCase("hard")){
+				} else if(args[0].equalsIgnoreCase("hard")){
 					
 					Damager.damage(8, p, 10);
 					Bukkit.dispatchCommand(sender, "kit stone");
-				}else if(args[0].equalsIgnoreCase("stop")||args[0].equalsIgnoreCase("s")){
+				} else if(args[0].equalsIgnoreCase("stop") || args[0].equalsIgnoreCase("s")){
 					
 					Damager.inDamager.remove(p);
 					
 				}
 				
-			}else if(args[0].equalsIgnoreCase("custom")){
+			} else if(args[0].equalsIgnoreCase("custom")){
 				
 					if(args[1].equalsIgnoreCase("damage")){
-						p.sendMessage("wuhu");
 						if(args[2].equalsIgnoreCase("+1")){
-							damage ++;
+							damage = damage +1;
 							p.sendMessage("Damage : " + damage);
 						}else if(args[2].equalsIgnoreCase("-1")){
-							damage --;
+							damage = damage + 1;
 							p.sendMessage("Damage : " + damage);
 							
 						}
 						
 					}else if(args[1].equalsIgnoreCase("time")){
 						if(args[2].equalsIgnoreCase("+1")){
-							time =time +5;
+							time = time +5;
 							p.sendMessage("Time : " + time);
 						}else if(args[2].equalsIgnoreCase("-1")){
-							time =time -5;
+							time = time -5;
 							p.sendMessage("Time : " + time);
 						}
 						
@@ -78,22 +71,16 @@ public class DamagerCMD implements CommandExecutor {
 						p.sendMessage(damage + "");
 						p.sendMessage(time + "");
 						p.sendMessage("reset");
-						}else if(args[1].equalsIgnoreCase("info")){
+					}else if(args[1].equalsIgnoreCase("info")){
 							p.sendMessage("Daten :");
 							p.sendMessage("Damage : " + damage);
 							p.sendMessage("Time : " + time);
 							
 							
-						}
-					
-						
-					
-					
-				}
+					}
+			}
 			
 		}
-		
-		
 		return true;
 	}
 
