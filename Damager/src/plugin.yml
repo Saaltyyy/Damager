@@ -1,0 +1,8 @@
+name: Damager
+author: Salty
+version: 1.0
+main: de.damager.main.main
+commands:
+     damager:
+     inv2:
+     
