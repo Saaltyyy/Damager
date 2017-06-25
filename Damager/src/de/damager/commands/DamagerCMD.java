@@ -5,6 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Cancellable;
 
 import de.damager.main.main;
 import de.damager.utils.Damager;
@@ -45,34 +46,30 @@ public class DamagerCMD implements CommandExecutor {
 					if(args[1].equalsIgnoreCase("damage")){
 						if(args[2].equalsIgnoreCase("+1")){
 							damage = damage +1;
-							p.sendMessage("Damage : " + damage);
+							
 						}else if(args[2].equalsIgnoreCase("-1")){
 							damage = damage -1;
-							p.sendMessage("Damage : " + damage);
 							
 						}
 						
 					}else if(args[1].equalsIgnoreCase("time")){
-						if(args[2].equalsIgnoreCase("+1")){
-							time = time +5;
-							p.sendMessage("Time : " + time);
-						}else if(args[2].equalsIgnoreCase("-1")){
-							time = time -5;
-							p.sendMessage("Time : " + time);
+						 if(args[2].equalsIgnoreCase("+1")){
+							time = time +2;
+							
+						} else if(args[2].equalsIgnoreCase("-1")){
+								time = time -2;
 						}
 						
-					}else if(args[1].equalsIgnoreCase("start")){
+					} else if(args[1].equalsIgnoreCase("start")){
 							
 							Damager.damage(damage, p, time);
 							Bukkit.dispatchCommand(sender, "kit stone");
 						
-					}else if(args[1].equalsIgnoreCase("reset")){
+					} else if(args[1].equalsIgnoreCase("reset")){
 						damage = 0;
 						time = 10;
-						p.sendMessage(damage + "");
-						p.sendMessage(time + "");
-						p.sendMessage("reset");
-					}else if(args[1].equalsIgnoreCase("info")){
+						
+					} else if(args[1].equalsIgnoreCase("info")){
 							p.sendMessage("Daten :");
 							p.sendMessage("Damage : " + damage);
 							p.sendMessage("Time : " + time);

@@ -1,6 +1,5 @@
 package de.damager.main;
 
-import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.Inventory;
@@ -16,7 +15,6 @@ import de.damager.utils.inv2;
 public class main extends JavaPlugin {
 		public static Inventory inv = null;
 		public static Inventory inv2 = null;
-		public static ArrayList<String> lore = new ArrayList<>();
 		private static main instance;
 		public void onEnable(){
 			instance = this;

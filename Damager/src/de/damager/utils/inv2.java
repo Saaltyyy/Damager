@@ -23,28 +23,27 @@ public class inv2 implements CommandExecutor {
 		
 		ItemStack timep1 = new ItemStack(Material.WOOL,1,(short)10);
 		ItemMeta timep1m = timep1.getItemMeta();
-		timep1m.setDisplayName(ChatColor.DARK_PURPLE + " TIME +1");
+		timep1m.setDisplayName(ChatColor.DARK_PURPLE + " TIME + 0,1 sec");
 		timep1.setItemMeta(timep1m);
 		
 		ItemStack timem1 = new ItemStack(Material.WOOL,1,(short)10);
 		ItemMeta timepmm = timem1.getItemMeta();
-		timepmm.setDisplayName(ChatColor.DARK_PURPLE + " TIME -1");
+		timepmm.setDisplayName(ChatColor.DARK_PURPLE + " TIME - 0,1 sec");
 		timem1.setItemMeta(timepmm);
 		
 		ItemStack schadenp1 = new ItemStack(Material.WOOL,1,(short)11);
 		ItemMeta schadenp1m = schadenp1.getItemMeta();
-		schadenp1m.setDisplayName(ChatColor.DARK_BLUE + " DAMAGE +1");
+		schadenp1m.setDisplayName(ChatColor.DARK_BLUE + " DAMAGE + 0.5 <3");
 		schadenp1.setItemMeta(schadenp1m);
 		
 		ItemStack schadenm1 = new ItemStack(Material.WOOL,1,(short)11);
 		ItemMeta schadenm1m = schadenm1.getItemMeta();
-		schadenm1m.setDisplayName(ChatColor.DARK_BLUE + " DAMAGE -1");
+		schadenm1m.setDisplayName(ChatColor.DARK_BLUE + " DAMAGE - 0.5 <3");
 		schadenm1.setItemMeta(schadenm1m);
 		
 		ItemStack start = new ItemStack(Material.WOOL,1,(short)5);
 		ItemMeta startm = start.getItemMeta();
 		startm.setDisplayName(ChatColor.GREEN + " START");
-		startm.setLore(main.lore);
 		start.setItemMeta(startm);
 		
 		ItemStack reset = new ItemStack(Material.WOOL,1,(short) 14);
@@ -59,12 +58,12 @@ public class inv2 implements CommandExecutor {
 		
 		ItemStack time = new ItemStack(Material.WOOL);
 		ItemMeta timem = time.getItemMeta();
-		timem.setDisplayName("Time : " + DamagerCMD.time);
+		timem.setDisplayName("Time : 0.5 sec's" );
 		time.setItemMeta(timem);
 		
 		ItemStack damage = new ItemStack(Material.WOOL);
 		ItemMeta damagem = damage.getItemMeta();
-		damagem.setDisplayName("Damage : " + DamagerCMD.damage);
+		damagem.setDisplayName("Damage : 0.0 <3");
 		damage.setItemMeta(damagem);
 		
 		main.inv2.setItem(18, back);

@@ -14,6 +14,7 @@ import de.damager.main.main;
 
 public class InvListener implements Listener {
 
+	
 		@EventHandler
 		public void onInvClick(InventoryClickEvent e) {
 			Player p = (Player) e.getWhoClicked();
@@ -38,16 +39,16 @@ public class InvListener implements Listener {
 				}
 			} else if(e.getInventory().getName().equalsIgnoreCase(ChatColor.WHITE + "Create your own Damager")){
 					e.setCancelled(true);
-					if(e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.DARK_PURPLE + " TIME +1")){
+					if(e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.DARK_PURPLE + " TIME + 0,1 sec")){
 						Bukkit.dispatchCommand(p, "damager custom time +1");
 						
-					} else if(e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.DARK_PURPLE + " TIME -1")){
+					} else if(e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.DARK_PURPLE + " TIME - 0,1 sec")){
 						Bukkit.dispatchCommand(p, "damager custom time -1");
 						
-					} else if(e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.DARK_BLUE + " DAMAGE +1")){
+					} else if(e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.DARK_BLUE + " DAMAGE + 0.5 <3")){
 						Bukkit.dispatchCommand(p, "damager custom damage +1");
 						
-					} else if(e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.DARK_BLUE + " DAMAGE -1")){
+					} else if(e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.DARK_BLUE + " DAMAGE - 0.5 <3")){
 						Bukkit.dispatchCommand(p, "damager custom damage -1");
 						
 					} else if(e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GREEN + " START")){
@@ -58,17 +59,21 @@ public class InvListener implements Listener {
 						
 					} else if(e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.WHITE + " BACK")){
 						p.openInventory(main.inv);
-						main.lore.remove("Test");
+						Bukkit.dispatchCommand(p, "damager custom reset");
+						
 					}
+					
+					double times = DamagerCMD.time;
+					double damages = DamagerCMD.damage;
 					
 					ItemStack time = new ItemStack(Material.WOOL);
 					ItemMeta timem = time.getItemMeta();
-					timem.setDisplayName("Time : " + DamagerCMD.time);
+					timem.setDisplayName("Time : " + times/20 + " sec's");
 					time.setItemMeta(timem);
 					
 					ItemStack damage = new ItemStack(Material.WOOL);
 					ItemMeta damagem = damage.getItemMeta();
-					damagem.setDisplayName("Damage : " + DamagerCMD.damage);
+					damagem.setDisplayName("Damage : " + damages/2 + " <3");
 					damage.setItemMeta(damagem);
 					
 					main.inv2.setItem(4, time);
