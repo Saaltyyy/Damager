@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import de.damager.commands.DamagerCMD;
 import de.damager.main.main;
 
 public class inv2 implements CommandExecutor {
@@ -17,7 +18,7 @@ public class inv2 implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		Player p = (Player) sender;
 		
-		main.inv2 = p.getServer().createInventory(null, 9,ChatColor.WHITE + "Create your own Damager");
+		main.inv2 = p.getServer().createInventory(null, 9*3,ChatColor.WHITE + "Create your own Damager");
 		
 		
 		ItemStack timep1 = new ItemStack(Material.WOOL,1,(short)10);
@@ -56,14 +57,25 @@ public class inv2 implements CommandExecutor {
 		backm.setDisplayName(ChatColor.WHITE + " BACK");
 		back.setItemMeta(backm);
 		
-		main.inv2.setItem(0, back);
-		main.inv2.setItem(2, schadenm1);
-		main.inv2.setItem(3, timem1);
-		main.inv2.setItem(4, start);
-		main.inv2.setItem(5, timep1);
-		main.inv2.setItem(6, schadenp1);
-		main.inv2.setItem(8, reset);
-			
+		ItemStack time = new ItemStack(Material.WOOL);
+		ItemMeta timem = time.getItemMeta();
+		timem.setDisplayName("Time : " + DamagerCMD.time);
+		time.setItemMeta(timem);
+		
+		ItemStack damage = new ItemStack(Material.WOOL);
+		ItemMeta damagem = damage.getItemMeta();
+		damagem.setDisplayName("Damage : " + DamagerCMD.damage);
+		damage.setItemMeta(damagem);
+		
+		main.inv2.setItem(18, back);
+		main.inv2.setItem(11, schadenm1);
+		main.inv2.setItem(14, timem1);
+		main.inv2.setItem(13, start);
+		main.inv2.setItem(15, timep1);
+		main.inv2.setItem(12, schadenp1);
+		main.inv2.setItem(26, reset);
+		main.inv2.setItem(4, time);
+		main.inv2.setItem(22, damage);
 		p.openInventory(main.inv2);
 		
 		
