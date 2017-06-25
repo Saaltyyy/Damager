@@ -13,13 +13,13 @@ import de.damager.main.main;
 public class Damager implements Listener{
 
 	public static HashMap<Player, Integer> inDamager = new HashMap<>();
+	private static int x;
 	
 	public static void damage(final double damage, final Player p, int time) {
 		
 		if(!inDamager.containsKey(p)) {
-			final int x = 0;
 			inDamager.put(p, x);
-			Bukkit.getScheduler().scheduleSyncRepeatingTask(main.getInstance(), new Runnable() {
+			x = Bukkit.getScheduler().scheduleSyncRepeatingTask(main.getInstance(), new Runnable() {
 				   
 				   @Override
 				   public void run() {
