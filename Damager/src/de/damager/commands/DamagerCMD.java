@@ -5,9 +5,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Cancellable;
-
-import de.damager.main.main;
 import de.damager.utils.Damager;
 
 public class DamagerCMD implements CommandExecutor {
@@ -61,10 +58,10 @@ public class DamagerCMD implements CommandExecutor {
 						}
 						
 					} else if(args[1].equalsIgnoreCase("start")){
-							
 							Damager.damage(damage, p, time);
 							Bukkit.dispatchCommand(sender, "kit stone");
-						
+							p.closeInventory();
+							
 					} else if(args[1].equalsIgnoreCase("reset")){
 						damage = 0;
 						time = 10;
