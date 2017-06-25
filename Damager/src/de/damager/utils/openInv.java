@@ -1,5 +1,6 @@
 package de.damager.utils;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -20,26 +21,26 @@ public class openInv implements Listener {
 			
 			if(e.getMaterial().equals(Material.MAGMA_CREAM)) {
 				
-				main.inv = p.getServer().createInventory(null, 9, "§c Choose your Damage");
+				main.inv = p.getServer().createInventory(null, 9, ChatColor.WHITE + "Choose your Damage");
 				
 				ItemStack easy = new ItemStack(Material.WOOL, 1,(short) 5);
 				ItemMeta easymeta = easy.getItemMeta();
-				easymeta.setDisplayName("§a EASY");
+				easymeta.setDisplayName(ChatColor.GREEN + " EASY");
 				easy.setItemMeta(easymeta);
 				
 				ItemStack medium = new ItemStack(Material.WOOL, 1,(short) 4);
 				ItemMeta mediummeta = easy.getItemMeta();
-				mediummeta.setDisplayName("§e MEDIUM");
+				mediummeta.setDisplayName(ChatColor.YELLOW + " MEDIUM");
 				medium.setItemMeta(mediummeta);
 				
 				ItemStack hard = new ItemStack(Material.WOOL, 1,(short) 14);
 				ItemMeta hardmeta = easy.getItemMeta();
-				hardmeta.setDisplayName("§c HARD");
+				hardmeta.setDisplayName(ChatColor.RED + " HARD");
 				hard.setItemMeta(hardmeta);
 				
 				ItemStack custom = new ItemStack(Material.WOOL);
 				ItemMeta custommeta = custom.getItemMeta();
-				custommeta.setDisplayName("§f CUSTOM");
+				custommeta.setDisplayName(" CUSTOM");
 				custom.setItemMeta(custommeta);
 				
 				main.inv.setItem(0, easy);

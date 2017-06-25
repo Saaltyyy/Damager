@@ -46,7 +46,7 @@ public class DamagerCMD implements CommandExecutor {
 							damage = damage +1;
 							p.sendMessage("Damage : " + damage);
 						}else if(args[2].equalsIgnoreCase("-1")){
-							damage = damage + 1;
+							damage = damage -1;
 							p.sendMessage("Damage : " + damage);
 							
 						}
