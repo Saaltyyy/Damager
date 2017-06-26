@@ -17,80 +17,10 @@ public class DamagerCMD implements CommandExecutor {
 		
 		if(sender instanceof Player) {
 			Player p = (Player) sender;
+				//TODO: CUSTOM DAMAGER, EASY, MEDIUM, HARD
 			
-			if (args.length == 1) {
-				
-				if(args[0].equalsIgnoreCase("easy")){
-					
-					Damager.damage(4, p, 10);
-					Bukkit.dispatchCommand(sender, "kit stone");
-				} else if(args[0].equalsIgnoreCase("medium")){
-					
-					Damager.damage(6, p, 10);
-					Bukkit.dispatchCommand(sender, "kit stone");
-				} else if(args[0].equalsIgnoreCase("hard")){
-					
-					Damager.damage(8, p, 10);
-					Bukkit.dispatchCommand(sender, "kit stone");
-				} else if(args[0].equalsIgnoreCase("stop") || args[0].equalsIgnoreCase("s")){
-					
-					Damager.inDamager.remove(p);
-					
-				}
-				
-			} else if(args[0].equalsIgnoreCase("custom")){
-				
-					if(args[1].equalsIgnoreCase("damage")){
-						if(args[2].equalsIgnoreCase("+1")){
-							if(damage  >= 19){
-								sender.sendMessage("Max. Damage reached!");
-							} else {
-								damage = damage +1;
-							}
-							
-						}else if(args[2].equalsIgnoreCase("-1")){
-							if(damage <=0){
-								sender.sendMessage("Min. Damage reached!");
-							} else {
-								damage = damage -1;
-							}
-							
-						}
-						
-					}else if(args[1].equalsIgnoreCase("time")){
-						 if(args[2].equalsIgnoreCase("+1")){
-							if(time >=40){
-								sender.sendMessage("Max. time reached!");
-							} else {
-								time = time +2;
-							}
-							
-						} else if(args[2].equalsIgnoreCase("-1")){
-							if(time <= 10){
-								sender.sendMessage("Min. Damage reached!");
-							} else {
-								time = time -2;
-							}
-						}
-						
-					} else if(args[1].equalsIgnoreCase("start")){
-							Damager.damage(damage, p, time);
-							Bukkit.dispatchCommand(sender, "kit stone");
-							p.closeInventory();
-							
-					} else if(args[1].equalsIgnoreCase("reset")){
-						damage = 0;
-						time = 10;
-						
-					} else if(args[1].equalsIgnoreCase("info")){
-							p.sendMessage("Daten :");
-							p.sendMessage("Damage : " + damage);
-							p.sendMessage("Time : " + time);
-							
-							
-					}
-			}
-			
+		} else {
+			sender.sendMessage("Only a Player can execute this command!");
 		}
 		return true;
 	}

@@ -7,15 +7,13 @@ public class DamagerObject {
 	Player p;
 	int time;
 	double damage;
-	static int countdown;
 	boolean started;
 	
-	public DamagerObject(Player p, int time, double damage, int countdown, boolean started) {
+	public DamagerObject(Player p, int time, double damage, boolean started) {
 		super();
 		this.p = p;
 		this.time = time;
 		this.damage = damage;
-		this.countdown = countdown;
 		this.started = started;
 	}
 	public Player getP() {
@@ -35,12 +33,6 @@ public class DamagerObject {
 	}
 	public void setDamage(double damage) {
 		this.damage = damage;
-	}
-	public int getCountdown() {
-		return countdown;
-	}
-	public void setCountdown(int countdown) {
-		this.countdown = countdown;
 	}
 	public boolean isStarted() {
 		return started;

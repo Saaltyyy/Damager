@@ -19,7 +19,7 @@ import de.damager.main.main;
 public class Damager {
 
 	public static ArrayList<DamagerObject> damager = new ArrayList<>();
-	
+	enum difficulty {EASY, MEDIUM, HARD};
 	@SuppressWarnings("deprecation")
 	public void startDamaging(final DamagerObject damager) {
 		 Bukkit.getScheduler().scheduleAsyncRepeatingTask(main.getInstance(), new BukkitRunnable() {
@@ -71,5 +71,23 @@ public class Damager {
 			}
 		}
 		return null;
+	}
+	public static void startBasicDamager(Player p, difficulty d) {
+		if (d == difficulty.EASY) {
+			DamagerObject object = new DamagerObject(p, 14, 4, false);
+			damager.add(object);
+			startDamager(object);
+		} else if (d == difficulty.MEDIUM) {
+			DamagerObject object = new DamagerObject(p, 14, 6, false);
+			damager.add(object);
+			startDamager(object);
+		} else if (d == difficulty.HARD) {
+			DamagerObject object = new DamagerObject(p, 10, 6, false);
+			damager.add(object);
+			startDamager(object);
+		}
+	}
+	public static void createCustomDamager(Player p) {
+		damager.add(new DamagerObject(p, 0, 0, false));
 	}
 }
