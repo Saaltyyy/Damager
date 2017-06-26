@@ -23,6 +23,9 @@ public class main extends JavaPlugin {
 			
 			registerEvents();
 			
+			openInv.fillInventory();
+			inv2 inv = new inv2();
+			inv.fillInventory();
 		
 		}
 		

@@ -43,22 +43,34 @@ public class DamagerCMD implements CommandExecutor {
 					if(args[1].equalsIgnoreCase("damage")){
 						if(args[2].equalsIgnoreCase("+1")){
 							if(damage  >= 19){
-							} else damage = damage +1;
+								sender.sendMessage("Max. Damage reached!");
+							} else {
+								damage = damage +1;
+							}
 							
 						}else if(args[2].equalsIgnoreCase("-1")){
 							if(damage <=0){
-							} else damage = damage -1;
+								sender.sendMessage("Min. Damage reached!");
+							} else {
+								damage = damage -1;
+							}
 							
 						}
 						
 					}else if(args[1].equalsIgnoreCase("time")){
 						 if(args[2].equalsIgnoreCase("+1")){
 							if(time >=40){
-							} else time = time +2;
+								sender.sendMessage("Max. time reached!");
+							} else {
+								time = time +2;
+							}
 							
 						} else if(args[2].equalsIgnoreCase("-1")){
 							if(time <= 10){
-							} else time = time -2;
+								sender.sendMessage("Min. Damage reached!");
+							} else {
+								time = time -2;
+							}
 						}
 						
 					} else if(args[1].equalsIgnoreCase("start")){

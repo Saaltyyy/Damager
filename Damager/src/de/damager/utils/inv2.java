@@ -1,5 +1,6 @@
 package de.damager.utils;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -18,7 +19,16 @@ public class inv2 implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		Player p = (Player) sender;
 		
-		main.inv2 = p.getServer().createInventory(null, 9*3,ChatColor.WHITE + "Create your own Damager");
+		
+		p.openInventory(main.inv2);
+		
+		
+		
+		
+		return true;
+	}
+	public void fillInventory() {
+		main.inv2 = Bukkit.getServer().createInventory(null, 9*3,ChatColor.WHITE + "Create your own Damager");
 		
 		
 		ItemStack timep1 = new ItemStack(Material.WOOL,1,(short)10);
@@ -75,12 +85,5 @@ public class inv2 implements CommandExecutor {
 		main.inv2.setItem(26, reset);
 		main.inv2.setItem(4, time);
 		main.inv2.setItem(22, damage);
-		p.openInventory(main.inv2);
-		
-		
-		
-		
-		return true;
 	}
-
 }
