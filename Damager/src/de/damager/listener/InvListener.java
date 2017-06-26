@@ -1,4 +1,4 @@
-package de.damager.commands;
+package de.damager.listener;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -10,6 +10,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import de.damager.commands.DamagerCMD;
 import de.damager.main.main;
 
 public class InvListener implements Listener {

@@ -7,7 +7,7 @@ public class DamagerObject {
 	Player p;
 	int time;
 	double damage;
-	int countdown;
+	static int countdown;
 	boolean started;
 	
 	public DamagerObject(Player p, int time, double damage, int countdown, boolean started) {

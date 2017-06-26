@@ -1,5 +1,6 @@
 package de.damager.utils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -10,57 +11,65 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import de.damager.commands.DamagerCMD;
 import de.damager.main.main;
 
-public class Damager implements Listener{
+public class Damager {
 
-	public static HashMap<Player, Integer> inDamager = new HashMap<>();
-	private static int x;
+	public static ArrayList<DamagerObject> damager = new ArrayList<>();
 	
-	public static void damage(final double damage, final Player p, int time) {
-		
-		if(!inDamager.containsKey(p)) {
-			inDamager.put(p, x);
-			x = Bukkit.getScheduler().scheduleSyncRepeatingTask(main.getInstance(), new Runnable() {
-				   
-				   @Override
-				   public void run() {
-					   if(inDamager.containsKey(p)) {
-						     p.damage(damage);
-					   }else {
-						   
-						   Bukkit.getScheduler().cancelTask(x);
-					   }
-				    
-					 
-				    
-				   }
-				  }, 0, time);
-				 }
+	@SuppressWarnings("deprecation")
+	public void startDamaging(final DamagerObject damager) {
+		 Bukkit.getScheduler().scheduleAsyncRepeatingTask(main.getInstance(), new BukkitRunnable() {
 			
-		} 
-	@EventHandler
-	public void onDeath(PlayerDeathEvent e) {
-		Player p = e.getEntity().getPlayer();
-		
-		ItemStack item = new ItemStack(Material.MAGMA_CREAM);
-		ItemMeta itemm = item.getItemMeta();
-		itemm.setDisplayName(ChatColor.GRAY + "Damager");
-		item.setItemMeta(itemm);
-		
-		p.getInventory().clear();
-		p.getInventory().setItem(4, item);
-		if (inDamager.containsKey(p)) {
-			Bukkit.dispatchCommand(p, "damager custom reset");
-			inDamager.remove(p);
-			
-			
-		}
-		
-		
-		
+			@Override
+			public void run() {
+				if (damager.started) {
+					damager.getP().damage(damager.getDamage());
+				} else {
+					this.cancel();
+				}
+				
+			}
+		}, 0, damager.getTime());
 	}
-	
+		
+	public static boolean updateTime(int time, DamagerObject damager, boolean add) {
+		if (!damager.isStarted()) {
+			if (add) {
+				damager.setTime(damager.getTime() + time);
+			} else {
+				damager.setTime(damager.getTime() - time);
+			}
+			return true;
+		}
+		return false;
+	}
+	public static boolean updateDamage(int damage, DamagerObject damager, boolean add) {
+		if (!damager.isStarted()) {
+			if (add) {
+				damager.setDamage(damager.getDamage() + damage);
+			} else {
+				damager.setDamage(damager.getDamage() - damage);
+			}
+			return true;
+		}
+		return false;
+	}
+	public static void startDamager(DamagerObject damager) {
+		if (!damager.isStarted()) {
+			damager.setStarted(true);
+			startDamager(damager);
+		}
+	}
+	public static DamagerObject getDamagerPlayer(Player p) {
+		for (DamagerObject d : damager) {
+			if (d.getP().getName().equals(p.getName())) {
+				return d;
+			}
+		}
+		return null;
+	}
 }

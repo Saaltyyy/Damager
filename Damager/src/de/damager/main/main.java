@@ -7,7 +7,8 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import de.damager.commands.DamagerCMD;
-import de.damager.commands.InvListener;
+import de.damager.listener.DamagerPlayerDeath;
+import de.damager.listener.InvListener;
 import de.damager.utils.Damager;
 import de.damager.utils.openInv;
 import de.damager.utils.inv2;
@@ -31,7 +32,7 @@ public class main extends JavaPlugin {
 		
 		private void registerEvents() {
 			PluginManager pm = Bukkit.getServer().getPluginManager();
-			pm.registerEvents(new Damager(), this);
+			pm.registerEvents(new DamagerPlayerDeath(), this);
 			pm.registerEvents(new openInv(), this);
 			pm.registerEvents(new InvListener(), this);
 			
